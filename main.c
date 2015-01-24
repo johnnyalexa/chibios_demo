@@ -19,6 +19,37 @@
 //#include "test.h"
 
 extern void start_threads(void);
+
+/*
+ * SPI TX and RX buffers.
+ */
+static uint8_t txbuf[]={1,2,3,4,5,6,7,8,9,10};
+static uint8_t rxbuf[10];
+	/* Maximum speed SPI configuration (18MHz, CPHA=0, CPOL=0, MSb first).*/
+static SPIConfig hs_spicfg = {NULL, IOPORT2, GPIOB_SPI2NSS, 0};
+
+
+/*
+ * SPI bus contender 1.
+ */
+static WORKING_AREA(spi_thread_1_wa, 256);
+static msg_t spi_thread_1(void *p) {
+
+  (void)p;
+  chRegSetThreadName("SPI thread 1");
+  while (TRUE) {
+    spiAcquireBus(&SPID2);              /* Acquire ownership of the bus.    */
+//    palClearPad(IOPORT3, GPIOC_LED);    /* LED ON.                          */
+    spiStart(&SPID2, &hs_spicfg);       /* Setup transfer parameters.       */
+    spiSelect(&SPID2);                  /* Slave Select assertion.          */
+    spiExchange(&SPID2, 10,
+                txbuf, rxbuf);          /* Atomic transfer operations.      */
+    spiUnselect(&SPID2);                /* Slave Select de-assertion.       */
+    spiReleaseBus(&SPID2);              /* Ownership release.               */
+  }
+  return 0;
+}
+
 /*
  * Application entry point.
  */
@@ -37,10 +68,15 @@ int main(void) {
   /*
    * Activates the serial driver 2 using the driver default configuration.
    */
+  palSetPadMode(IOPORT2, GPIOB_SPI2NSS, PAL_MODE_OUTPUT_PUSHPULL);
+  palSetPad(IOPORT2, GPIOB_SPI2NSS);
+
  // sdStart(&SD2, NULL);
 
 
 	start_threads();
+	
+	chThdCreateStatic(spi_thread_1_wa, sizeof(spi_thread_1_wa), NORMALPRIO + 1, spi_thread_1, NULL);
   /*
    * Normal main() thread activity, in this demo it does nothing except
    * sleeping in a loop and check the button state.
