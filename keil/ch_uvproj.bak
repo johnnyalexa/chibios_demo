@@ -334,8 +334,8 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
-            <oTime>1</oTime>
+            <Optim>1</Optim>
+            <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>0</OneElfS>
             <Strict>0</Strict>
@@ -350,7 +350,7 @@
               <MiscControls></MiscControls>
               <Define>__heap_base__=Image$$RW_IRAM1$$ZI$$Limit __heap_end__=Image$$RW_IRAM2$$Base</Define>
               <Undefine></Undefine>
-              <IncludePath>..\;..\..\..\os\kernel\include;..\..\..\os\ports\common\ARMCMx;..\..\..\os\ports\common\ARMCMx\CMSIS\include;..\..\..\os\ports\RVCT\ARMCMx;..\..\..\os\ports\RVCT\ARMCMx\STM32F1xx;..\..\..\os\hal\include;..\..\..\os\hal\platforms\STM32;..\..\..\os\hal\platforms\STM32\GPIOv1;..\..\..\os\hal\platforms\STM32\DMAv1;..\..\..\os\hal\platforms\STM32\SPIv1;..\..\..\os\hal\platforms\STM32\USARTv1;..\..\..\os\hal\platforms\STM32\USBv1;..\..\..\os\hal\platforms\STM32F1xx;..\..\..\boards\OLIMEX_STM32_P103;..\..\..\test</IncludePath>
+              <IncludePath>..\;..\..\..\os\kernel\include;..\..\..\os\ports\common\ARMCMx;..\..\..\os\ports\common\ARMCMx\CMSIS\include;..\..\..\os\ports\RVCT\ARMCMx;..\..\..\os\ports\RVCT\ARMCMx\STM32F1xx;..\..\..\os\hal\include;..\..\..\os\hal\platforms\STM32;..\..\..\os\hal\platforms\STM32\GPIOv1;..\..\..\os\hal\platforms\STM32\DMAv1;..\..\..\os\hal\platforms\STM32\SPIv1;..\..\..\os\hal\platforms\STM32\USARTv1;..\..\..\os\hal\platforms\STM32\USBv1;..\..\..\os\hal\platforms\STM32F1xx;..\..\..\boards\STM32F103C8T6-miniboard;..\..\..\extra\eth_tcp_client_server-dhcp-5.9;..\..\..\test</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -394,12 +394,22 @@
             <File>
               <FileName>board.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\boards\OLIMEX_STM32_P103\board.c</FilePath>
+              <FilePath>..\..\..\boards\STM32F103C8T6-miniboard\board.c</FilePath>
             </File>
             <File>
               <FileName>board.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\boards\OLIMEX_STM32_P103\board.h</FilePath>
+              <FilePath>..\..\..\boards\STM32F103C8T6-miniboard\board.h</FilePath>
+            </File>
+            <File>
+              <FileName>enc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\boards\STM32F103C8T6-miniboard\enc.c</FilePath>
+            </File>
+            <File>
+              <FileName>enc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\boards\STM32F103C8T6-miniboard\enc.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -921,130 +931,25 @@
               <FileType>5</FileType>
               <FilePath>..\..\..\os\hal\platforms\STM32F1xx\stm32f10x.h</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>test</GroupName>
-          <Files>
             <File>
-              <FileName>test.c</FileName>
+              <FileName>spi_lld.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\test\test.c</FilePath>
+              <FilePath>..\..\..\os\hal\platforms\STM32\SPIv1\spi_lld.c</FilePath>
             </File>
             <File>
-              <FileName>testbmk.c</FileName>
+              <FileName>spi_lld.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\os\hal\platforms\STM32\SPIv1\spi_lld.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\test\testbmk.c</FilePath>
+              <FilePath>..\..\..\os\hal\platforms\STM32F1xx\stm32_dma.c</FilePath>
             </File>
             <File>
-              <FileName>testdyn.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\test\testdyn.c</FilePath>
-            </File>
-            <File>
-              <FileName>testevt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\test\testevt.c</FilePath>
-            </File>
-            <File>
-              <FileName>testheap.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\test\testheap.c</FilePath>
-            </File>
-            <File>
-              <FileName>testmbox.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\test\testmbox.c</FilePath>
-            </File>
-            <File>
-              <FileName>testmsg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\test\testmsg.c</FilePath>
-            </File>
-            <File>
-              <FileName>testmtx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\test\testmtx.c</FilePath>
-            </File>
-            <File>
-              <FileName>testpools.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\test\testpools.c</FilePath>
-            </File>
-            <File>
-              <FileName>testqueues.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\test\testqueues.c</FilePath>
-            </File>
-            <File>
-              <FileName>testsem.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\test\testsem.c</FilePath>
-            </File>
-            <File>
-              <FileName>testthd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\test\testthd.c</FilePath>
-            </File>
-            <File>
-              <FileName>test.h</FileName>
+              <FileName>stm32_dma.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\test\test.h</FilePath>
-            </File>
-            <File>
-              <FileName>testbmk.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\test\testbmk.h</FilePath>
-            </File>
-            <File>
-              <FileName>testdyn.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\test\testdyn.h</FilePath>
-            </File>
-            <File>
-              <FileName>testevt.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\test\testevt.h</FilePath>
-            </File>
-            <File>
-              <FileName>testheap.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\test\testheap.h</FilePath>
-            </File>
-            <File>
-              <FileName>testmbox.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\test\testmbox.h</FilePath>
-            </File>
-            <File>
-              <FileName>testmsg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\test\testmsg.h</FilePath>
-            </File>
-            <File>
-              <FileName>testmtx.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\test\testmtx.h</FilePath>
-            </File>
-            <File>
-              <FileName>testpools.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\test\testpools.h</FilePath>
-            </File>
-            <File>
-              <FileName>testqueues.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\test\testqueues.h</FilePath>
-            </File>
-            <File>
-              <FileName>testsem.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\test\testsem.h</FilePath>
-            </File>
-            <File>
-              <FileName>testthd.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\test\testthd.h</FilePath>
+              <FilePath>..\..\..\os\hal\platforms\STM32F1xx\stm32_dma.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1075,6 +980,91 @@
               <FileName>threads2.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\threads2.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\ip_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>test_OKworks.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\test_OKworks.c</FilePath>
+            </File>
+            <File>
+              <FileName>test_static_ip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\test_static_ip.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>uip_stack</GroupName>
+          <Files>
+            <File>
+              <FileName>psock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\uip_stack\psock.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\uip_stack\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\uip_stack\uip.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip_arp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\uip_stack\uip_arp.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip-fw.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\uip_stack\uip-fw.c</FilePath>
+            </File>
+            <File>
+              <FileName>uiplib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\uip_stack\uiplib.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip-neighbor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\uip_stack\uip-neighbor.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip-split.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\uip_stack\uip-split.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>tcp_demo</GroupName>
+          <Files>
+            <File>
+              <FileName>http.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\tcp_app\http.c</FilePath>
+            </File>
+            <File>
+              <FileName>tcp_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\tcp_app\tcp_app.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\tcp_app\ui.c</FilePath>
+            </File>
+            <File>
+              <FileName>util.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\extra\tcp_app\util.c</FilePath>
             </File>
           </Files>
         </Group>
